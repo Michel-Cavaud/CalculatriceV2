@@ -3,6 +3,7 @@ package calculatrice;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -17,7 +18,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.IOException;
-import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -55,6 +55,10 @@ public class FrameCalculatrice {
 	private void initialize() {
 		Image img = null;
 		
+		String[] boutons = {"leMRC","le7", "le4", "le1", "le0", "leMPlus", "le8", "le5", "le2", "lePoint", "leMmoins", "le9", "le6", "le3", "leSigne", "leCE", "lePourcent", "leMultiplier", "lePlus",
+				"leON", "leRacine", "leDiviser", "leMoins", "leEgal" };
+		
+		
 		frame = new JFrame();
 		frame.setPreferredSize(new Dimension(387, 646));
 		frame.pack();
@@ -79,7 +83,30 @@ public class FrameCalculatrice {
 		ecran.setHorizontalAlignment(JLabel.RIGHT);
 		panel_principal.add(ecran);
 		
-		JButton leCE = new JButton();
+		//MesBoutons bouton = new MesBoutons(cal , ecran, "le7", 0, 0);
+		//panel_principal.add(new MesBoutons(cal , ecran, "le7", 86, 340));
+		
+		int imgBouton = 0;
+			for(int i = 16; i <= 296; i = i + 70) {
+				for(int j = 270; j <= 510; j = j + 60) {
+					System.out.println(imgBouton);
+					System.out.println(i);
+					System.out.println(j);
+					System.out.println(boutons[imgBouton]);
+					if(i == 226 & j == 450) {
+						j = 510;
+						panel_principal.add(new MesBoutons(cal , ecran, boutons[imgBouton], i, j , 110, 60));
+					}else {
+						panel_principal.add(new MesBoutons(cal , ecran, boutons[imgBouton], i, j , 50, 60));
+					}
+					imgBouton++;
+				}
+				
+			}
+			
+		
+		
+		/*JButton leCE = new JButton();
 		leCE.setBorder(null);
 		leCE.setBackground(new Color(34, 43, 03));
 		img = null;
@@ -756,7 +783,7 @@ public class FrameCalculatrice {
 			e1.printStackTrace();
 		}
 		leMMoins.setBounds(156, 270, 60, 50);
-		panel_principal.add(leMMoins);
+		panel_principal.add(leMMoins);*/
 		
 		
 		JLabel fondLabel = new JLabel();
@@ -780,7 +807,7 @@ public class FrameCalculatrice {
 		panel_principal.add(panel);
 		
 		// Les saisies clavier
-		panel_principal.addKeyListener(new KeyListener() {
+		/*panel_principal.addKeyListener(new KeyListener() {
 	        @Override
 	        public void keyTyped(KeyEvent e) {
 	        	if(cal.isOnOff()) {
@@ -861,6 +888,6 @@ public class FrameCalculatrice {
 	        		leEgal.doClick();
 	            }
 	        }
-	    });
+	    });*/
 	}
 }

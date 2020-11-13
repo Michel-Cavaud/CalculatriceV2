@@ -190,7 +190,11 @@ public class Calculatrice {
 				setChaineAffiche("" + valeur1.multiply(valeur2, precision));
 				break;	
 			case "/":
-				setChaineAffiche("" + valeur1.divide(valeur2, precision));
+				if(valeur2.compareTo(BigDecimal.ZERO) != 0) {
+					setChaineAffiche("" + valeur1.divide(valeur2, precision));
+				}else {
+					setChaineAffiche("/ par 0");
+				}
 				break;	
 			}
 			setOperation("");

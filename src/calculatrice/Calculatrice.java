@@ -5,21 +5,106 @@ import java.math.MathContext;
 
 
 /**
- * Les fonctions de calcules 
+ * Les fonctions de calcule
  * @author Michel CAVAUD
  *
  */
 public class Calculatrice {
 	private boolean onOff = false; //Calculatrice ON ou OFF
-	private String chaineAffiche = ""; // La chaine renvoyée pour l'affichage 
-	private String operation =  ""; //Une opération est demandé ( +, -, *, /)
-	private String resultats; //Le 1er nombre tapé ou le resultat précédent
-	private boolean posNombre = true; //Possibilité de faire un calcul
-	private boolean signe = true; //Possibilité de changer le signe du nombre
-	private String memoire = "0"; //La mémoire
+	private String chaineAffiche = ""; // La chaine renvoyï¿½e pour l'affichage 
+	private String operation =  ""; //Une opÃ©ration est demandÃ©e ( +, -, *, /)
+	private String resultats; //Le 1er nombre tapÃ© ou le resultat prÃ©cÃ©dent
+	private boolean posNombre = true; //PossibilitÃ© de faire un calcul
+	private boolean signe = true; //PossibilitÃ© de changer le signe du nombre
+	private String memoire = "0"; //La mÃ©moire
 	
 	/**
-	 * Allume la calculette ou efface les données si déjà sur ON
+	 * Action suivant la touche cliquÃ©e
+	 * @param num Numero objet touche
+	 * @return getChaineAffiche() La chaine Ã  afficher
+	 */
+	public String quelBouton(int num) {
+		switch (num) {
+		case 20:
+			if(this.onOff()) {
+				this.affichage("0");
+			}
+			break;
+		case 4:
+			this.affichage("1");
+			break;
+		case 5:
+			this.affichage("0");
+			break;
+		case 10:
+			this.affichage(".");
+			break;
+		case 9:
+			this.affichage("2");
+			break;
+		case 14:
+			this.affichage("3");
+			break;
+		case 3:
+			this.affichage("4");
+			break;
+		case 8:
+			this.affichage("5");
+			break;
+		case 13:
+			this.affichage("6");
+			break;
+		case 2:
+			this.affichage("7");
+			break;
+		case 7:
+			this.affichage("8");
+			break;
+		case 12:
+			this.affichage("9");
+			break;
+		case 24:
+			this.resultat();
+			break;
+		case 19:
+			this.operations("+");
+			break;
+		case 23:
+			this.operations("-");
+			break;
+		case 18:
+			this.operations("x");
+			break;
+		case 22:
+			this.operations("/");
+			break;
+		case 17:
+			this.pourcentage();
+			break;
+		case 21:
+			this.racine();
+			break;
+		case 15:
+			this.changementSigne();
+			break;
+		case 16:
+			this.leCE();
+			break;
+		case 1:
+			this.memoires("MRC");
+			break;
+		case 6:
+			this.memoires("M-");
+			break;
+		case 11:
+			this.memoires("M+");
+			break;
+		}
+		return getChaineAffiche();
+	}
+	
+	/**
+	 * Allume la calculette ou efface les donnï¿½es si dï¿½jï¿½ sur ON
 	 * @return isOnOff() Si ON ou OFF
 	 */
 	public boolean onOff() {
@@ -38,18 +123,20 @@ public class Calculatrice {
 	}
 	
 	/**
-	 * Efface le dernier nombre rentré
-	 * @return getChaineAffiche() La chaine à afficher
+	 * Efface le dernier nombre rentrï¿½
+	 * @return getChaineAffiche() La chaine ï¿½ afficher
 	 */
 	public String leCE() {
-		setChaineAffiche("0");
+		if(isOnOff()) {
+			setChaineAffiche("0");
+		}
 		return getChaineAffiche();
 	}
 	
 	/**
-	 * Gestion des touches mémoires
-	 * @param mem La touche mémoire activé (MRC, M+ ou M-)
-	 * @return getChaineAffiche() La chaine à afficher
+	 * Gestion des touches mÃ©moires
+	 * @param mem La touche mÃ©moire activï¿½ (MRC, M+ ou M-)
+	 * @return getChaineAffiche() La chaine  Ã  afficher
 	 */
 	public String memoires(String mem) {
 		if(isOnOff() & !isPosNombre()) {
@@ -75,9 +162,9 @@ public class Calculatrice {
 	}
 
 	/**
-	 * Gestion des chiffres pour contituer la chaine à afficher
-	 * @param touche la valeur entré dans la calculette (0 à 9 et le .)
-	 * @return getChaineAffiche() La chaine à afficher
+	 * Gestion des chiffres pour contituer la chaine  Ã  afficher
+	 * @param touche la valeur entrÃ© dans la calculette (0 Ã  9 et le .)
+	 * @return getChaineAffiche() La chaine Ã  afficher
 	 */
 	public String affichage(String touche) {
 		if(isOnOff()) {
@@ -95,14 +182,15 @@ public class Calculatrice {
 				setPosNombre(true);
 				setSigne(true);
 			}
-		}
-		//Suprimer le 1er zéro ou ajouter un zéro si le point est au début
-		if(getChaineAffiche().length() > 1) {
-			if(getChaineAffiche().charAt(0) == '0' & getChaineAffiche().charAt(1) != '.') {
-				setChaineAffiche(getChaineAffiche().substring(1, getChaineAffiche().length()));
-			}
-			if(getChaineAffiche().charAt(0) == '.') {
-				setChaineAffiche("0" + getChaineAffiche());
+		
+			//Suprimer le 1er zÃ©ro ou ajouter un zÃ©ro si le point est au dÃ©but
+			if(getChaineAffiche().length() > 1) {
+				if(getChaineAffiche().charAt(0) == '0' & getChaineAffiche().charAt(1) != '.') {
+					setChaineAffiche(getChaineAffiche().substring(1, getChaineAffiche().length()));
+				}
+				if(getChaineAffiche().charAt(0) == '.') {
+					setChaineAffiche("0" + getChaineAffiche());
+				}
 			}
 		}
 		return getChaineAffiche();
@@ -110,10 +198,10 @@ public class Calculatrice {
 	
 	/**
 	 * Gestion du changement de signe
-	 * @return getChaineAffiche() La chaine à afficher
+	 * @return getChaineAffiche() La chaine ï¿½Ã afficher
 	 */
 	public String changementSigne() {
-		if(isSigne()){
+		if(isOnOff() & isSigne()){
 			if(getChaineAffiche().charAt(0) == '-') {
 				setChaineAffiche(getChaineAffiche().substring(1, getChaineAffiche().length()));
 			}else {
@@ -125,57 +213,63 @@ public class Calculatrice {
 	
 	/**
 	 * Calcul du pourcentation
-	 * @return getChaineAffiche() La chaine à afficher
+	 * @return getChaineAffiche() La chaine Ã  afficher
 	 */
 	public String pourcentage() {
-		BigDecimal valeur1 = new BigDecimal(getChaineAffiche());
-		BigDecimal valeur2 = new BigDecimal("100");
-		MathContext precision = new MathContext(10); 
-		setChaineAffiche("" + valeur1.divide(valeur2, precision));
-		setOperation("");
-		setPosNombre(false);
+		if(isOnOff()) {
+			BigDecimal valeur1 = new BigDecimal(getChaineAffiche());
+			BigDecimal valeur2 = new BigDecimal("100");
+			MathContext precision = new MathContext(10); 
+			setChaineAffiche("" + valeur1.divide(valeur2, precision));
+			setOperation("");
+			setPosNombre(false);
+		}
 		
 		return getChaineAffiche();
 	}
 	
 	/**
-	 * Calcul de la racine carré
-	 * @return getChaineAffiche() La chaine à afficher
+	 * Calcul de la racine carrÃ©
+	 * @return getChaineAffiche() La chaine Ã  afficher
 	 */
 	public String racine() {
-		Float f = Float.parseFloat(getChaineAffiche());
-		Float result = (float) Math.sqrt(f);
-		if(result.isNaN()) {
-			setChaineAffiche("Erreur");
-		}else {
-			setChaineAffiche("" + result);
+		if(isOnOff()) {
+			Float f = Float.parseFloat(getChaineAffiche());
+			Float result = (float) Math.sqrt(f);
+			if(result.isNaN()) {
+				setChaineAffiche("Erreur");
+			}else {
+				setChaineAffiche("" + result);
+			}
+			setOperation("");
+			setPosNombre(false);
 		}
-		setOperation("");
-		setPosNombre(false);
 		
 		return afficheInt();
 	}
 	
 	/**
-	 * Enregistre l'opération à faire
-	 * @param touche Quelle Opération (+, -, *, /)
+	 * Enregistre l'opÃ©ration Ã  faire
+	 * @param touche Quelle OpÃ©ration (+, -, *, /)
 	 */
 	public void operations(String touche) {
-		setSigne(false);
-		setPosNombre(false);
-		if(getOperation() != "") {
-			this.resultat();
+		if(isOnOff()) {
+			setSigne(false);
+			setPosNombre(false);
+			if(getOperation() != "") {
+				this.resultat();
+			}
+			setOperation(touche);
+			setResultats(getChaineAffiche());
 		}
-		setOperation(touche);
-		setResultats(getChaineAffiche());
 	}
 	
 	/**
-	 * Suite au égal ou entrer du clavier fait l'opération demandée
-	 * @return getChaineAffiche() La chaine à afficher
+	 * Suite au Ã©gal ou entrer du clavier fait l'opÃ©ration demandÃ©e
+	 * @return getChaineAffiche() La chaine Ã  afficher
 	 */
 	public String resultat() {
-		if(getOperation() != "" & isPosNombre()) {
+		if(isOnOff() & getOperation() != "" & isPosNombre()) {
 			BigDecimal valeur1 = new BigDecimal(resultats);
 			BigDecimal valeur2 = new BigDecimal(getChaineAffiche());
 			MathContext precision = new MathContext(10); 
@@ -200,13 +294,12 @@ public class Calculatrice {
 			setOperation("");
 			setPosNombre(false);
 		}
-	
 		return afficheInt();
 	}
 		
 	/**
-	 * Transforme le résultat en int si pas de valeur après le .
-	 * @return getChaineAffiche() La chaine à afficher
+	 * Transforme le rÃ©sultat en int si pas de valeur aprÃ©s le .
+	 * @return getChaineAffiche() La chaine Ã  afficher
 	 */
 	private String afficheInt() {
 		try {
@@ -303,7 +396,6 @@ public class Calculatrice {
 		}
 		return chaineAffiche;
 	}
-
 	/**
 	 * @param chaineAffiche the chaineAffiche to set
 	 */

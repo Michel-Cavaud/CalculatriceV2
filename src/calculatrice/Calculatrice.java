@@ -100,7 +100,7 @@ public class Calculatrice {
 			this.memoires("M-");
 			break;
 		}
-		return getChaineAffiche();
+		return changerLePoint();
 	}
 	
 	/**
@@ -138,7 +138,7 @@ public class Calculatrice {
 	 * @param mem La touche mémoire activ� (MRC, M+ ou M-)
 	 * @return getChaineAffiche() La chaine  à afficher
 	 */
-	public String memoires(String mem) {
+	public void memoires(String mem) {
 		if(isOnOff() & !isPosNombre()) {
 			BigDecimal valeur1 = new BigDecimal(getMemoire());
 			BigDecimal valeur2 = new BigDecimal(getChaineAffiche());
@@ -158,7 +158,7 @@ public class Calculatrice {
 			setResultats("");
 			setPosNombre(false);
 		}
-		return getChaineAffiche();
+		
 	}
 
 	/**
@@ -193,7 +193,6 @@ public class Calculatrice {
 				}
 			}
 		}
-	
 		return changerLePoint();
 	}
 	
@@ -308,7 +307,6 @@ public class Calculatrice {
 	 * @return getChaineAffiche() La chaine à afficher
 	 */
 	private String afficheInt() {
-		System.out.println(getChaineAffiche());
 		String retour = null;
 		try {
 			float fFloat = Float.parseFloat(getChaineAffiche());
@@ -316,10 +314,8 @@ public class Calculatrice {
 			if (fFloat - fInt == 0) {
 				setChaineAffiche("" + fInt);
 				retour = getChaineAffiche();
-				System.out.println(retour);
 			}else {
 				retour = changerLePoint();
-				System.out.println(retour);
 			}
 		}catch(Exception e) {
 				
@@ -328,6 +324,10 @@ public class Calculatrice {
 		return retour;
 	}
 	
+	/**
+	 * Remplacement du point par la virgule pour l'affichage
+	 * @return affichage avec une virgule au lieu du point
+	 */
 	private String changerLePoint() {
 		String sansLePoint = getChaineAffiche().replace(".", ",");
 		getChaineAffiche().replace(",", ".");

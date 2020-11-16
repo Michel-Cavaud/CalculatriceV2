@@ -252,16 +252,21 @@ public class Calculatrice {
 	 * Enregistre l'opération à faire
 	 * @param touche Quelle Opération (+, -, *, /)
 	 */
-	public void operations(String touche) {
+	public String operations(String touche) {
 		if(isOnOff()) {
 			setSigne(false);
 			setPosNombre(false);
 			if(getOperation() != "") {
+				setPosNombre(true);
+			
 				this.resultat();
+				
 			}
 			setOperation(touche);
 			setResultats(getChaineAffiche());
 		}
+		
+		return afficheInt();
 	}
 	
 	/**

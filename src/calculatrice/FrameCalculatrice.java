@@ -56,7 +56,7 @@ public class FrameCalculatrice {
 	}
 	
 	/**
-	 * CrÃ©er les boutons
+	 * Créer les boutons
 	 */
 	private void creerBoutons() {
 		int imgBouton = 0;

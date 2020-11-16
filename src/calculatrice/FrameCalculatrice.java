@@ -178,19 +178,19 @@ public class FrameCalculatrice {
 		        		mesBoutons[9].doClick();
 		        		break;
 		        	case '+':
-		        		cal.operations("+");
+		        		ecran.setText(cal.operations("+"));
 		        		mesBoutons[18].doClick();
 		        		break;
 		        	case '-':
-		        		cal.operations("-");
+		        		ecran.setText(cal.operations("-"));
 		        		mesBoutons[22].doClick();
 		        		break;
 		        	case '*':
-		        		cal.operations("x");
+		        		ecran.setText(cal.operations("x"));
 		        		mesBoutons[17].doClick();
 		        		break;
 		        	case '/':
-		        		cal.operations("/");
+		        		ecran.setText(cal.operations("/"));
 		        		mesBoutons[21].doClick();
 		        		break;
 		        	case '=':

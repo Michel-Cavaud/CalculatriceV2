@@ -9,7 +9,9 @@ Utiliser la méthode [KANBAN](https://cda.needemand.com/2020/11/04/kanban-une-me
 **La conception :**
 J'ai d'abord fait une version 1 avec une interface "simple" en bouton et une création des boutons individuelle. Cette version était fonctionnelle pour les calculs de la calculatrice.
 **La version 2** a une interface plus proche du travail demandé (utilisation d'image pour les boutons),
+
 ![Capture d'écran calculatrice](https://github.com/Michel-Cavaud/CalculatriceV2/blob/master/Dossier_Conception/Capture-ecran_calculatricepng.png)
+
 
 une class spécifique pour créer des boutons. Chaque bouton est un nouvel objet de cette class créé par une boucle.
    

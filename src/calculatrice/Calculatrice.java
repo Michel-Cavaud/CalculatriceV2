@@ -94,10 +94,10 @@ public class Calculatrice {
 			this.memoires("MRC");
 			break;
 		case 6:
-			this.memoires("M-");
+			this.memoires("M+");
 			break;
 		case 11:
-			this.memoires("M+");
+			this.memoires("M-");
 			break;
 		}
 		return getChaineAffiche();
@@ -193,7 +193,8 @@ public class Calculatrice {
 				}
 			}
 		}
-		return getChaineAffiche();
+	
+		return changerLePoint();
 	}
 	
 	/**
@@ -225,7 +226,7 @@ public class Calculatrice {
 			setPosNombre(false);
 		}
 		
-		return getChaineAffiche();
+		return afficheInt();
 	}
 	
 	/**
@@ -307,16 +308,30 @@ public class Calculatrice {
 	 * @return getChaineAffiche() La chaine à afficher
 	 */
 	private String afficheInt() {
+		System.out.println(getChaineAffiche());
+		String retour = null;
 		try {
 			float fFloat = Float.parseFloat(getChaineAffiche());
 			int fInt = (int)fFloat;
 			if (fFloat - fInt == 0) {
 				setChaineAffiche("" + fInt);
+				retour = getChaineAffiche();
+				System.out.println(retour);
+			}else {
+				retour = changerLePoint();
+				System.out.println(retour);
 			}
 		}catch(Exception e) {
 				
 		}
-		return getChaineAffiche();
+		
+		return retour;
+	}
+	
+	private String changerLePoint() {
+		String sansLePoint = getChaineAffiche().replace(".", ",");
+		getChaineAffiche().replace(",", ".");
+		return sansLePoint;
 	}
 	
 

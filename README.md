@@ -1,6 +1,6 @@
 ## Projet Pédagogique *`La calculatrice`*
 
- **Formation Concepteur Développeur D'Applications (CDA) 2020 - 2021 GRETA Montpellier.**
+ **Formation Concepteur Développeur d'Applications (CDA) 2020 - 2021 GRETA Montpellier.**
  
 **Le projet :** 
 Concevoir une calculatrice en JAVA et Swing suivant les consignes ([Voir consignes](https://github.com/Michel-Cavaud/CalculatriceV2/blob/master/Dossier_Conception/Projet-calculatrice.pdf))

@@ -117,7 +117,7 @@ public class Calculatrice {
 			setOperation("");
 			setResultats("");
 			setPosNombre(true);
-			setMemoire("0");
+			//setMemoire("0");
 		}
 		return isOnOff();
 	}
@@ -138,8 +138,8 @@ public class Calculatrice {
 	 * @param mem La touche mémoire activ� (MRC, M+ ou M-)
 	 * @return getChaineAffiche() La chaine  à afficher
 	 */
-	public void memoires(String mem) {
-		if(isOnOff() & !isPosNombre()) {
+	public String memoires(String mem) {
+		if(isOnOff() ) {
 			BigDecimal valeur1 = new BigDecimal(getMemoire());
 			BigDecimal valeur2 = new BigDecimal(getChaineAffiche());
 			MathContext precision = new MathContext(10); 
@@ -154,10 +154,11 @@ public class Calculatrice {
 					setChaineAffiche(getMemoire());
 					break;
 			}
-			setOperation("");
-			setResultats("");
+			//setOperation("");
+			//setResultats("");
 			setPosNombre(false);
 		}
+		return afficheInt();
 		
 	}
 
@@ -253,15 +254,18 @@ public class Calculatrice {
 	 * @param touche Quelle Opération (+, -, *, /)
 	 */
 	public String operations(String touche) {
-		if(isOnOff()) {
+		
+		
+		if(isOnOff() ) {
 			setSigne(false);
-			setPosNombre(false);
-			if(getOperation() != "") {
+			
+			if(getOperation() != "" & isPosNombre()) {
 				setPosNombre(true);
 			
 				this.resultat();
 				
 			}
+			setPosNombre(false);
 			setOperation(touche);
 			setResultats(getChaineAffiche());
 		}
@@ -274,10 +278,14 @@ public class Calculatrice {
 	 * @return getChaineAffiche() La chaine à afficher
 	 */
 	public String resultat() {
-		if(isOnOff() & getOperation() != "" & isPosNombre()) {
+		
+		if(isOnOff() & getOperation() != "") {
+			System.out.println(getChaineAffiche());
 			BigDecimal valeur1 = new BigDecimal(resultats);
 			BigDecimal valeur2 = new BigDecimal(getChaineAffiche());
 			MathContext precision = new MathContext(10); 
+			
+			
 			switch (getOperation()) {
 			case "+":
 				setChaineAffiche("" + valeur1.add(valeur2, precision));
@@ -297,28 +305,32 @@ public class Calculatrice {
 				break;	
 			}
 			setOperation("");
+			
+			
 			setPosNombre(false);
 		}
 		return afficheInt();
 	}
 		
 	/**
-	 * Transforme le résultat en int si pas de valeur aprés le .
+	 * Transforme le résultat en int si pas de valeur aprés le . 
 	 * @return getChaineAffiche() La chaine à afficher
 	 */
 	private String afficheInt() {
 		String retour = null;
+		float fFloat = 0;
+		int fInt = 0;
 		try {
-			float fFloat = Float.parseFloat(getChaineAffiche());
-			int fInt = (int)fFloat;
-			if (fFloat - fInt == 0) {
-				setChaineAffiche("" + fInt);
-				retour = getChaineAffiche();
-			}else {
-				retour = changerLePoint();
-			}
+			fFloat = Float.parseFloat(getChaineAffiche());
+			fInt = (int)fFloat;
 		}catch(Exception e) {
-				
+			return getChaineAffiche();
+		}
+		if (fFloat - fInt == 0) {
+			setChaineAffiche("" + fInt);
+			retour = getChaineAffiche();
+		}else {
+			retour = changerLePoint();
 		}
 		
 		return retour;

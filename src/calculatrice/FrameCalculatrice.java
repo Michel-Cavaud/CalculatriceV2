@@ -38,7 +38,7 @@ public class FrameCalculatrice {
 			public void run() {
 				try {
 					FrameCalculatrice window = new FrameCalculatrice();
-					window.frame.setVisible(true);
+					window.frame.setVisible(true); 
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

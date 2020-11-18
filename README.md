@@ -43,5 +43,5 @@ Au fur et à mesure du projet les fiches Kanban ont avancé dans le tableau. Ave
 
 Un jeu de test à été créé pour tester toutes les fonctionnalités de la calculatrice ([Jeu de test](https://github.com/Michel-Cavaud/CalculatriceV2/blob/master/Dossier_Conception/Jeux%20de%20test.pdf)) 
 
-Et pour finir le digramme de class du projet édité sous Eclipse :
+Et pour finir le diagramme de class du projet édité sous Eclipse :
 ![Diagramme de class Calculatrice](https://github.com/Michel-Cavaud/CalculatriceV2/blob/master/Diagramme%20Class%20Calculatrice.png)

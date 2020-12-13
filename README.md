@@ -12,6 +12,10 @@ J'ai d'abord fait une version 1 avec une interface "simple" en bouton et une cr�
 
 ![Capture d'écran calculatrice](https://github.com/Michel-Cavaud/CalculatriceV2/blob/master/Dossier_Conception/Capture-ecran_calculatricepng.png)
 
+<p align="center">
+  <img src="(https://github.com/Michel-Cavaud/CalculatriceV2/blob/master/Dossier_Conception/Capture-ecran_calculatricepng.png" />
+</p>
+
 
 une class spécifique pour créer des boutons. Chaque bouton est un nouvel objet de cette class créé par une boucle.
    

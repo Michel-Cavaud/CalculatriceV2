@@ -13,7 +13,7 @@ J'ai d'abord fait une version 1 avec une interface "simple" en bouton et une cr�
 ![Capture d'écran calculatrice](https://github.com/Michel-Cavaud/CalculatriceV2/blob/master/Dossier_Conception/Capture-ecran_calculatricepng.png)
 
 <p align="center">
-  <img src="(https://github.com/Michel-Cavaud/CalculatriceV2/blob/master/Dossier_Conception/Capture-ecran_calculatricepng.png" />
+  <img src="https://github.com/Michel-Cavaud/CalculatriceV2/blob/master/Dossier_Conception/Capture-ecran_calculatricepng.png?raw=true" alt="Capture d'écran calculatrice"/>
 </p>
 
 

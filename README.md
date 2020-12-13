@@ -10,12 +10,9 @@ Utiliser la méthode [KANBAN](https://cda.needemand.com/2020/11/04/kanban-une-me
 J'ai d'abord fait une version 1 avec une interface "simple" en bouton et une création des boutons individuelle. Cette version était fonctionnelle pour les calculs de la calculatrice.
 **La version 2** a une interface plus proche du travail demandé (utilisation d'image pour les boutons),
 
-![Capture d'écran calculatrice](https://github.com/Michel-Cavaud/CalculatriceV2/blob/master/Dossier_Conception/Capture-ecran_calculatricepng.png)
-
 <p align="center">
   <img src="https://github.com/Michel-Cavaud/CalculatriceV2/blob/master/Dossier_Conception/Capture-ecran_calculatricepng.png?raw=true" alt="Capture d'écran calculatrice"/>
 </p>
-
 
 une class spécifique pour créer des boutons. Chaque bouton est un nouvel objet de cette class créé par une boucle.
    
@@ -48,4 +45,6 @@ Au fur et à mesure du projet les fiches Kanban ont avancé dans le tableau. Ave
 Un jeu de test à été créé pour tester toutes les fonctionnalités de la calculatrice ([Jeu de test](https://github.com/Michel-Cavaud/CalculatriceV2/blob/master/Dossier_Conception/Jeux%20de%20test.pdf)) 
 
 Et pour finir le diagramme de class du projet édité sous Eclipse :
-![Diagramme de class Calculatrice](https://github.com/Michel-Cavaud/CalculatriceV2/blob/master/Diagramme%20Class%20Calculatrice.png)
+<p align="center">
+  <img src="https://github.com/Michel-Cavaud/CalculatriceV2/blob/master/Diagramme%20Class%20Calculatrice.png?raw=true" alt="Diagramme de class Calculatrice"/>
+</p>
